@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Growth Regulators - Agri Fertilizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-image: url('agro.png.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(135deg, #f8fafa, #dff702);
+            color: rgb(28, 7, 253);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 600;
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        header img {
+            height: 120px;
+            margin-right: 20px;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .slogan {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d30202;
+            background-color: #dff70297;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .search-bar input {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 250px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            margin-left: 10px;
+            padding: 8px 20px;
+            border: none;
+            background-color: rgb(6, 246, 6);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .search-bar button:hover {
+            background-color: rgb(5, 200, 5);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            flex-grow: 1;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #0a45f4;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 8px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+        .product h2 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-top: 15px;
+        }
+        .product p {
+            font-size: 1.1rem;
+            color: rgb(23, 2, 2);
+            margin: 10px 0;
+            background-color: #f7a902b1;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .product {
+            background: #d9ff04cd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .buy-btn {
+            background-color: rgb(11, 8, 238);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .buy-btn:hover {
+            background-color: rgb(73, 0, 100);
+        }
+        footer {
+            background: rgba(1, 6, 3, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            .header-content {
+                text-align: center;
+                padding-right: 0;
+                margin-top: 10px;
+            }
+            header img {
+                margin-right: 0;
+                height: 100px;
+            }
+            .search-bar {
+                margin: 10px auto 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            .search-bar input {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 22px;
+            }
+            .slogan {
+                font-size: 18px;
+            }
+            .products {
+                grid-template-columns: 1fr;
+            }
+            .search-bar {
+                width: 100%;
+            }
+            .search-bar input {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Shri Mahalaxmi Krushi Seva Kendra Logo">
+        <div class="header-content">
+            SHRI MAHALAXMI KRUSHI SEVA KENDR, KHANDAL
+            <div class="slogan">Plant Growth Regulators (वनस्पती वाढ नियामक)</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Products...">
+            <button>Search</button>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="product.html">Product Rate</a></li>
+            <li><a href="solution.html">Agriculture Solutions</a></li>
+            <li><a href="order.html">Buy and Order</a></li>
+            <li><a href="help.html">FAQs & Help Center</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="products">
+            <div class="product">
+                <img src="https://www.mystore.in/s/62ea2c599d1398fa16dbae0a/66b0b1e83ce6e600b11ef56b/img_20240805_162916-1-.jpg" alt="Isabion 100 Plant Growth Regulator">
+                <h2>Isabion 100</h2>
+                <p>150/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.mystore.in/s/62ea2c599d1398fa16dbae0a/66b0b1e83ce6e600b11ef56b/img_20240805_162916-1-.jpg" alt="Isabion 250 ml Plant Growth Regulator">
+                <h2>Isabion 250 ml</h2>
+                <p>350/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.mystore.in/s/62ea2c599d1398fa16dbae0a/66b0b1e83ce6e600b11ef56b/img_20240805_162916-1-.jpg" alt="Isabion 500 ml Plant Growth Regulator">
+                <h2>Isabion 500 ml</h2>
+                <p>600/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.mystore.in/s/62ea2c599d1398fa16dbae0a/66b0b1e83ce6e600b11ef56b/img_20240805_162916-1-.jpg" alt="Isabion 1 ltr Plant Growth Regulator">
+                <h2>Isabion 1 ltr</h2>
+                <p>1100/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://i.ytimg.com/vi/Y2UqPlIGDwA/maxresdefault.jpg" alt="Quantis 100 ml Plant Growth Regulator">
+                <h2>Quantis 100 ml</h2>
+                <p>150/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://i.ytimg.com/vi/Y2UqPlIGDwA/maxresdefault.jpg" alt="Quantis 400 ml Plant Growth Regulator">
+                <h2>Quantis 400 ml</h2>
+                <p>450/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://agroshopy.com/image/cache/catalog/biozyme%20CP-500x500.jpg" alt="Biozyme 100 ml Plant Growth Regulator">
+                <h2>Biozyme 100 ml</h2>
+                <p>120/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://agroshopy.com/image/cache/catalog/biozyme%20CP-500x500.jpg" alt="Biozyme 250 ml Plant Growth Regulator">
+                <h2>Biozyme 250 ml</h2>
+                <p>250/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://agroshopy.com/image/cache/catalog/biozyme%20CP-500x500.jpg" alt="Biozyme 500 ml Plant Growth Regulator">
+                <h2>Biozyme 500 ml</h2>
+                <p>450/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/51PoSq4XH1L.jpg" alt="Dhanzyme Gold 100 ml Plant Growth Regulator">
+                <h2>Dhanzyme Gold 100 ml</h2>
+                <p>120/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/51PoSq4XH1L.jpg" alt="Dhanzyme Gold 250 ml Plant Growth Regulator">
+                <h2>Dhanzyme Gold 250 ml</h2>
+                <p>250/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/51PoSq4XH1L.jpg" alt="Dhanzyme Gold 500 ml Plant Growth Regulator">
+                <h2>Dhanzyme Gold 500 ml</h2>
+                <p>450/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/61oi0ng+WoL._AC_UF1000,1000_QL80_.jpg" alt="Bio 20 250 ml Plant Growth Regulator">
+                <h2>Bio 20 250 ml</h2>
+                <p>350/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/61oi0ng+WoL._AC_UF1000,1000_QL80_.jpg" alt="Bio 20 500 ml Plant Growth Regulator">
+                <h2>Bio 20 500 ml</h2>
+                <p>650/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2024/8/443636232/TB/HF/FV/72861708/humic-acid-liquid-fertilizer-500x500.jpeg" alt="Uniwin USS Special 250 ml Plant Growth Regulator">
+                <h2>Uniwin USS Special 250 ml</h2>
+                <p>250/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2024/8/443636232/TB/HF/FV/72861708/humic-acid-liquid-fertilizer-500x500.jpeg" alt="Uniwin USS Special 500 ml Plant Growth Regulator">
+                <h2>Uniwin USS Special 500 ml</h2>
+                <p>450/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2024/8/443636232/TB/HF/FV/72861708/humic-acid-liquid-fertilizer-500x500.jpeg" alt="Uniwin USS Special 1 ltr Plant Growth Regulator">
+                <h2>Uniwin USS Special 1 ltr</h2>
+                <p>880/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://cdn.dotpe.in/longtail/item_thumbnails/6792607/nFrkCmrQ-500-500.webp" alt="Max Yld 250 ml Plant Growth Regulator">
+                <h2>Max Yld 250 ml</h2>
+                <p>250/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://mankindag.com/wp-content/uploads/2022/10/Nurturkind-YLD.png" alt="Nutrikind Yld 250 ml Plant Growth Regulator">
+                <h2>Nutrikind Yld 250 ml</h2>
+                <p>250/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://i0.wp.com/mankindag.com/wp-content/uploads/2022/10/purple-new-pgr-1.webp?fit=400%2C400&ssl=1" alt="Bio Bloom 100 ml Plant Growth Regulator">
+                <h2>Bio Bloom 100 ml</h2>
+                <p>200/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://i0.wp.com/mankindag.com/wp-content/uploads/2022/10/purple-new-pgr-1.webp?fit=400%2C400&ssl=1" alt="Bio Bloom 250 ml Plant Growth Regulator">
+                <h2>Bio Bloom 250 ml</h2>
+                <p>450/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbUaoPG4PsBHPr-32F476zW6hWfhU--85iVA&s" alt="Planto Zyme 250 ml Plant Growth Regulator">
+                <h2>Planto Zyme 250 ml</h2>
+                <p>120/-</p>
+                <a href="https://forms.gle/Kh1Dv7Af7Z53ijvb8">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Shri Mahalaxmi Krushi Seva Kendra | All Rights Reserved<br>
+        Contact: Khandal, Maharashtra
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector(".search-bar input");
+            const searchButton = document.querySelector(".search-bar button");
+            const products = document.querySelectorAll(".product");
+
+            function searchProducts() {
+                const searchText = searchInput.value.toLowerCase().trim();
+                products.forEach(product => {
+                    const productText = product.innerText.toLowerCase();
+                    if (searchText === "" || productText.includes(searchText)) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            }
+            
+            searchButton.addEventListener("click", searchProducts);
+            searchInput.addEventListener("input", searchProducts);
+            searchInput.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    searchProducts();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

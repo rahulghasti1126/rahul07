@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Buy and Order - SHREE MAHALAXMI AGRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-image: url(agro.png.webp);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Improved Header with Logo */
+        header {
+            background: linear-gradient(135deg, #f8fafa, #dff702);
+            color: rgb(28, 7, 253);
+            padding: 80px 15px 30px;
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            object-fit: contain;
+            background: white;
+        }
+        
+        .slogan {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: bold;
+            color: #fa4d08;
+            margin-top: 10px;
+        }
+        
+        /* Responsive Navigation */
+        nav {
+            background-color: #0a45f4;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 5px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav ul li {
+            margin: 5px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        
+        .search-bar input {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            flex-grow: 1;
+            min-width: 120px;
+            font-size: 0.9rem;
+        }
+        
+        .search-bar button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            border: none;
+            background-color: rgb(6, 246, 6);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: #05d105;
+        }
+        
+        /* Main Content Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 15px;
+        }
+        
+        .product {
+            background: rgba(217, 255, 4, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .product:hover {
+            transform: scale(1.03);
+        }
+        
+        .product img {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .product h2 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #0a45f4;
+        }
+        
+        .product p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 10px;
+            background-color: rgba(247, 169, 2, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        .buy-btn {
+            background-color: #0a45f4;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .buy-btn:hover {
+            background-color: #0830b5;
+        }
+        
+        /* Sections Styling */
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a45f4;
+            font-size: 1.8rem;
+        }
+        
+        /* Category Titles */
+        .category-title {
+            background: #02cceb;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        /* Order Options */
+        .order-options {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .order-button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .order-button.whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+        
+        .order-button.whatsapp:hover {
+            background-color: #128c7e;
+        }
+        
+        .order-button.call {
+            background-color: #0a45f4;
+            color: white;
+        }
+        
+        .order-button.call:hover {
+            background-color: #0830b5;
+        }
+        
+        /* Footer */
+        footer {
+            background: #010603;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+        
+        /* Call Box */
+        .call-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .call-header {
+            background: #0a45f4;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .call-body {
+            padding: 15px;
+        }
+        
+        .call-body a {
+            color: #0a45f4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        #close-call {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                padding: 70px 15px 25px;
+            }
+            
+            header img {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                display: none;
+                padding: 10px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
+            
+            .search-bar {
+                margin: 10px auto;
+                width: 90%;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 60px 10px 20px;
+            }
+            
+            header img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .call-box {
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        </div>
+        SHRI MAHALAXMI KRUSHI SEVA KENDR, KHANDAL
+        <div class="slogan">Buy and Order</div>
+    </header>
+    
+    <nav>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <ul id="navMenu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="product.html"><i class="fas fa-tags"></i> Product Rate</a></li>
+            <li><a href="solution.html"><i class="fas fa-lightbulb"></i> Agriculture Solutions</a></li>
+            <li><a href="order.html" class="active"><i class="fas fa-shopping-cart"></i> Buy and Order</a></li>
+            <li><a href="help.html"><i class="fas fa-question-circle"></i> FAQs & Help Center</a></li>
+            <li class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Products...">
+                    <button><i class="fas fa-search"></i> Search</button>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <main class="main-container">
+        <div class="section">
+            <h2>Our Products</h2>
+            
+            <div class="category-title">Herbicides</div>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="https://agriplexindia.com/cdn/shop/files/Ju-Atrazine50-Wdp.png?v=1692170118" alt="Atrazine">
+                    <h2>Atrazine</h2>
+                    <p>140/-(250 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://agriplexindia.com/cdn/shop/files/Ju-Atrazine50-Wdp.png?v=1692170118" alt="Atrazine">
+                    <h2>Atrazine</h2>
+                    <p>270/-(500 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://www.rallis.com/Upload/Images/thumbnail/metri-1-small.png" alt="Tata metri">
+                    <h2>Tata metri</h2>
+                    <p>160/-(100 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/BF/YE/MM/GLADMIN-3061/dhanuka-barrier-herbicide.png" alt="Berrier">
+                    <h2>Berrier</h2>
+                    <p>160/-(100 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://agriplexindia.com/cdn/shop/files/Atul-Plasto--Herbicides.jpg?crop=center&height=500&v=1693305599&width=600" alt="Plasto">
+                    <h2>Plasto</h2>
+                    <p>150/-(100 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2021/8/KT/IO/ME/133319790/55.jpg" alt="2,4-D">
+                    <h2>2,4-D</h2>
+                    <p>110/-(250 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2021/8/KT/IO/ME/133319790/55.jpg" alt="2,4-D">
+                    <h2>2,4-D</h2>
+                    <p>200/-(500 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2021/8/KT/IO/ME/133319790/55.jpg" alt="2,4-D">
+                    <h2>2,4-D</h2>
+                    <p>350/-(1 lit)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/YF/AF/MY-59373149/2-4-d-agan-pesticide-500x500.jpg" alt="2,4-D">
+                    <h2>2,4-D</h2>
+                    <p>200/-(500 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://agribegri.com/productimage/1a0aebdba9d2c79dfc9d91b08c654ea6-11-03-20-13-02-02.webp" alt="Tamar">
+                    <h2>Tamar</h2>
+                    <p>700/-(500 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://agribegri.com/productimage/1a0aebdba9d2c79dfc9d91b08c654ea6-11-03-20-13-02-02.webp" alt="Tamar">
+                    <h2>Tamar</h2>
+                    <p>1350/-(1 kg)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://agribegri.com/productimage/20571663551741059974.webp" alt="Diurex">
+                    <h2>Diurex</h2>
+                    <p>450/-(500 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://www.somaniagro.com/cdn/shop/files/Untitleddesign_36.png?v=1715060268" alt="Lojas">
+                    <h2>Lojas</h2>
+                    <p>800/-(700 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://m.media-amazon.com/images/I/716kvla9VlL.jpg" alt="Laudis">
+                    <h2>Laudis</h2>
+                    <p>850/-(57.5 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2024/6/429710498/AH/FF/CU/160154910/excel-mera-71-herbicide.jpeg" alt="Meera 71">
+                    <h2>Meera 71</h2>
+                    <p>140/-(40 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2024/1/374932240/XP/AK/OD/153602235/liquid-swal-ferio-herbicide-500x500.jpg" alt="Flori">
+                    <h2>Flori</h2>
+                    <p>500/-(500 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.dotpe.in/longtail/store-items/6792607/q3ZepXRR.webp" alt="Round up">
+                    <h2>Round up</h2>
+                    <p>450/-(500 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://agribegri.com/productimage/f0ee8dd13a48b3160df01e0fa1c505f7-03-09-24-17-53-26.webp" alt="Gramoxone">
+                    <h2>Gramoxone</h2>
+                    <p>400/-(1 lit)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="category-title">Fungicides</div>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="https://cdn.dotpe.in/longtail/store-items/6792607/zna3Ypa1.jpeg" alt="Bavistin">
+                    <h2>Bavistin</h2>
+                    <p>100/-(50 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.dotpe.in/longtail/store-items/6792607/zna3Ypa1.jpeg" alt="Bavistin">
+                    <h2>Bavistin</h2>
+                    <p>180/-(100 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/ANDROID/Default/2022/12/HZ/AB/QQ/98659487/product-jpeg-500x500.jpg" alt="M-45">
+                    <h2>M-45</h2>
+                    <p>80/-(100 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/ANDROID/Default/2022/12/HZ/AB/QQ/98659487/product-jpeg-500x500.jpg" alt="M-45">
+                    <h2>M-45</h2>
+                    <p>150/-(250 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://www.syngenta.co.in/sites/g/files/kgtney376/files/styles/syngenta_large_4_3/public/media/image/2022/04/27/kavach_flo4.jpg?itok=1p58HJpw" alt="Kavach Flo">
+                    <h2>Kavach Flo</h2>
+                    <p>250/-(100 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.shopify.com/s/files/1/0722/2059/files/glo-it-fungicide-file-11220.webp?v=1737473914" alt="Glo It">
+                    <h2>Glo It</h2>
+                    <p>250/-(100 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.shopify.com/s/files/1/0722/2059/files/glo-it-fungicide-file-11220.webp?v=1737473914" alt="Glo It">
+                    <h2>Glo It</h2>
+                    <p>550/-(250 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.shopify.com/s/files/1/0722/2059/files/contaf-fungicide-file-2175.webp?v=1737483264" alt="Contaf">
+                    <h2>Contaf</h2>
+                    <p>110/-(100 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://cdn.shopify.com/s/files/1/0722/2059/files/contaf-fungicide-file-2175.webp?v=1737483264" alt="Contaf">
+                    <h2>Contaf</h2>
+                    <p>220/-(250 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://jaikisaan.online/pub/media/catalog/product/cache/b1b728cc939740432e9176c8ad5da688/t/r/trophy_1__1.png" alt="Haru">
+                    <h2>Haru</h2>
+                    <p>250/-(250 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://tiimg.tistatic.com/fp/1/007/563/premium-essential-powerful-agricultural-swadheen-systemic-fungicide-250-gm-842.jpg" alt="Swadheen">
+                    <h2>Swadheen</h2>
+                    <p>250/-(250 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://www.kisanshop.in/s/65f83b39d13b931b1c1f1a9b/660693be6d6539393f601415/adama-orius-fungicide-480x480.jpg" alt="Orius">
+                    <h2>Orius</h2>
+                    <p>300/-(100 ml)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/ANDROID/Default/2025/1/483585217/PR/GR/FK/226194879/product-jpeg.jpeg" alt="Natio">
+                    <h2>Natio</h2>
+                    <p>550/-(50 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://www.agroes.in/product-images/WhatsApp+Image+2022-03-18+at+5.23.21+PM.jpeg/105281000005395817/300x300" alt="Thionutri">
+                    <h2>Thionutri</h2>
+                    <p>130/-(500 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/ANDROID/Default/2024/11/467814537/ZQ/VR/KC/18553695/product-jpeg-500x500.jpg" alt="Blue Copper">
+                    <h2>Blue Copper</h2>
+                    <p>550/-(500 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+                <div class="product">
+                    <img src="https://static.agrostar.in/static/AGS-CP-711_N_1.jpg" alt="Kavach">
+                    <h2>Kavach</h2>
+                    <p>200/-(100 gm)</p>
+                    <a href="https://docs.google.com/forms/d/1o-IqZluWb0fxz9EDdJs435maJzRIJi3w4rjOZROllRQ/edit" class="buy-btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Additional product categories would go here -->
+            
+            <div class="order-options">
+                <h3>Need help with your order?</h3>
+                <a href="https://wa.me/message/7EAOLWJABJFWH1" class="order-button whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="#" class="order-button call" id="call-now">
+                    <i class="fas fa-phone"></i> Call for Assistance
+                </a>
+            </div>
+        </div>
+        
+        <div id="call-box" class="call-box">
+            <div class="call-header">
+                <span>Call us</span>
+                <button id="close-call">×</button>
+            </div>
+            <div class="call-body">
+                <p>Call us at: <a href="tel:+917028230423">+91 7028230423</a></p>
+                <p>Available 9:00 AM - 6:00 PM, Monday to Saturday</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 SHRI MAHALAXMI KRUSHI SEVA KENDR | All Rights Reserved</p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        });
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector(".search-bar input");
+            const searchButton = document.querySelector(".search-bar button");
+            const products = document.querySelectorAll(".product");
+
+            function searchProducts() {
+                const searchText = searchInput.value.toLowerCase().trim();
+                products.forEach(product => {
+                    if (product.innerText.toLowerCase().includes(searchText)) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            }
+            searchButton.addEventListener("click", searchProducts);
+            searchInput.addEventListener("input", searchProducts);
+        });
+    </script>
+</body>
+</html>

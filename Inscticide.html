@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insecticides - Agri Fertilizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-image: url('agro.png.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(135deg, #f8fafa, #dff702);
+            color: rgb(28, 7, 253);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 600;
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        header img {
+            height: 120px;
+            margin-right: 20px;
+        }
+        .header-content {
+            flex-grow: 1;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .slogan {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d30202;
+            background-color: #dff70297;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .search-bar input {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 250px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            margin-left: 10px;
+            padding: 8px 20px;
+            border: none;
+            background-color: rgb(6, 246, 6);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .search-bar button:hover {
+            background-color: rgb(5, 200, 5);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            flex-grow: 1;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #0a45f4;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 8px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+        .product h2 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-top: 15px;
+        }
+        .product p {
+            font-size: 1.1rem;
+            color: rgb(23, 2, 2);
+            margin: 10px 0;
+            background-color: #f7a902b1;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .product {
+            background: #d9ff04cd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .buy-btn {
+            background-color: rgb(11, 8, 238);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .buy-btn:hover {
+            background-color: rgb(73, 0, 100);
+        }
+        footer {
+            background: rgba(1, 6, 3, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            .header-content {
+                text-align: center;
+                padding-right: 0;
+                margin-top: 10px;
+            }
+            header img {
+                margin-right: 0;
+                height: 100px;
+            }
+            .search-bar {
+                margin: 10px auto 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            .search-bar input {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 22px;
+            }
+            .slogan {
+                font-size: 18px;
+            }
+            .products {
+                grid-template-columns: 1fr;
+            }
+            .search-bar {
+                width: 100%;
+            }
+            .search-bar input {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Shri Mahalaxmi Krushi Seva Kendra Logo">
+        <div class="header-content">
+            SHRI MAHALAXMI KRUSHI SEVA KENDR, KHANDAL
+            <div class="slogan">Insecticide (कीटकनाशक)</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Products...">
+            <button>Search</button>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="product.html">Product Rate</a></li>
+            <li><a href="solution.html">Agriculture Solutions</a></li>
+            <li><a href="order.html">Buy and Order</a></li>
+            <li><a href="help.html">FAQs & Help Center</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="products">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71C3eS1Ka2L.jpg" alt="Tricel 100ml">
+                <h2>Tricel</h2>
+                <p>60/- (100 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71C3eS1Ka2L.jpg" alt="Tricel 250ml">
+                <h2>Tricel</h2>
+                <p>100/- (250 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71C3eS1Ka2L.jpg" alt="Tricel 500ml">
+                <h2>Tricel</h2>
+                <p>180/- (500 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71C3eS1Ka2L.jpg" alt="Tricel 1 lit">
+                <h2>Tricel</h2>
+                <p>350/- (1 lit)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://cpimg.tistatic.com/07268983/b/5/Hamla-Bio-Pesticides.jpg" alt="Hamla 100ml">
+                <h2>Hamla</h2>
+                <p>120/- (100 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://cpimg.tistatic.com/07268983/b/5/Hamla-Bio-Pesticides.jpg" alt="Hamla 250ml">
+                <h2>Hamla</h2>
+                <p>250/- (250 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://cpimg.tistatic.com/07268983/b/5/Hamla-Bio-Pesticides.jpg" alt="Hamla 500ml">
+                <h2>Hamla</h2>
+                <p>450/- (500 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://cpimg.tistatic.com/07268983/b/5/Hamla-Bio-Pesticides.jpg" alt="Hamla 1 lit">
+                <h2>Hamla</h2>
+                <p>800/- (1 lit)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/ECOM/Default/2023/7/327807996/RP/NU/BQ/159918562/agr-ins-107033638-1668368013797-500x500.webp" alt="Tafgor 100ml">
+                <h2>Tafgor</h2>
+                <p>130/- (100 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/ECOM/Default/2023/7/327807996/RP/NU/BQ/159918562/agr-ins-107033638-1668368013797-500x500.webp" alt="Tafgor 250ml">
+                <h2>Tafgor</h2>
+                <p>250/- (250 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.agrowala.com/theme/images/product/img_1937048139_1499950229.jpg" alt="Profex Super 100ml">
+                <h2>Profex Super</h2>
+                <p>140/- (100 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.agrowala.com/theme/images/product/img_1937048139_1499950229.jpg" alt="Profex Super 250ml">
+                <h2>Profex Super</h2>
+                <p>280/- (250 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.agriplexindia.com/cdn/shop/files/Atul-Lepto--Insecticides.jpg?v=1693305822" alt="Lepto 50gm">
+                <h2>Lepto</h2>
+                <p>150/- (50 gm)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.agriplexindia.com/cdn/shop/files/Atul-Lepto--Insecticides.jpg?v=1693305822" alt="Lepto 100gm">
+                <h2>Lepto</h2>
+                <p>250/- (100 gm)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.ZNcwjyQtKHrWqMhNXuKoVgHaHa?rs=1&pid=ImgDetMain" alt="Alika 40ml">
+                <h2>Alika</h2>
+                <p>140/- (40 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.ZNcwjyQtKHrWqMhNXuKoVgHaHa?rs=1&pid=ImgDetMain" alt="Alika 80ml">
+                <h2>Alika</h2>
+                <p>260/- (80 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.glAWrKOq40NtFBGb067YkQHaJ4?w=480&h=640&rs=1&pid=ImgDetMain" alt="Karate 100ml">
+                <h2>Karate</h2>
+                <p>90/- (100 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.glAWrKOq40NtFBGb067YkQHaJ4?w=480&h=640&rs=1&pid=ImgDetMain" alt="Karate 250ml">
+                <h2>Karate</h2>
+                <p>200/- (250 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.glAWrKOq40NtFBGb067YkQHaJ4?w=480&h=640&rs=1&pid=ImgDetMain" alt="Karate 500ml">
+                <h2>Karate</h2>
+                <p>350/- (500 ml)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://th.bing.com/th/id/OIP.glAWrKOq40NtFBGb067YkQHaJ4?w=480&h=640&rs=1&pid=ImgDetMain" alt="Karate 1 lit">
+                <h2>Karate</h2>
+                <p>750/- (1 lit)</p>
+                <a href="https://forms.gle/7zKU8Nos84FBpssy5">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Shri Mahalaxmi Krushi Seva Kendra | All Rights Reserved<br>
+        Contact: Khandal, Maharashtra
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector(".search-bar input");
+            const searchButton = document.querySelector(".search-bar button");
+            const products = document.querySelectorAll(".product");
+
+            function searchProducts() {
+                const searchText = searchInput.value.toLowerCase().trim();
+                products.forEach(product => {
+                    const productText = product.innerText.toLowerCase();
+                    if (searchText === "" || productText.includes(searchText)) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            }
+            
+            searchButton.addEventListener("click", searchProducts);
+            searchInput.addEventListener("input", searchProducts);
+            searchInput.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    searchProducts();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
