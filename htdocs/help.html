@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FAQs & Help Center - SHREE MAHALAXMI AGRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-image: url(agro.png.webp);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Improved Header with Logo */
+        header {
+            background: linear-gradient(135deg, #f8fafa, #dff702);
+            color: rgb(28, 7, 253);
+            padding: 80px 15px 30px;
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            object-fit: contain;
+            background: white;
+        }
+        
+        .slogan {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: bold;
+            color: #fa4d08;
+            margin-top: 10px;
+        }
+        
+        .intro-text {
+            font-size: 1rem;
+            color: rgba(8, 2, 34, 0.988);
+            margin-top: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Responsive Navigation */
+        nav {
+            background-color: #0a45f4;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 5px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav ul li {
+            margin: 5px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        
+        .search-bar input {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            flex-grow: 1;
+            min-width: 120px;
+            font-size: 0.9rem;
+        }
+        
+        .search-bar button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            border: none;
+            background-color: rgb(6, 246, 6);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: #05d105;
+        }
+        
+        /* Main Content Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Sections Styling */
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a45f4;
+            font-size: 1.8rem;
+        }
+        
+        /* FAQ Styling */
+        .faq-item {
+            background: rgba(217, 255, 4, 0.5);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            background: rgba(217, 255, 4, 0.7);
+        }
+        
+        .faq-item h3 {
+            color: #0a45f4;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-item h3::after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+        
+        .faq-item.active h3::after {
+            content: '-';
+        }
+        
+        .faq-item p {
+            color: #333;
+            margin-top: 10px;
+            display: none;
+            padding: 0 10px;
+        }
+        
+        .faq-item.active p {
+            display: block;
+        }
+        
+        /* Help Center Section */
+        .help-center {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 15px;
+        }
+        
+        .contact-info strong {
+            color: #0a45f4;
+        }
+        
+        /* Order Options */
+        .order-options {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .order-button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            color: white;
+        }
+        
+        .order-button.whatsapp {
+            background-color: #25d366;
+        }
+        
+        .order-button.whatsapp:hover {
+            background-color: #128c7e;
+        }
+        
+        .order-button.call {
+            background-color: #0a45f4;
+        }
+        
+        .order-button.call:hover {
+            background-color: #0830b5;
+        }
+        
+        /* Footer */
+        footer {
+            background: #010603;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+        
+        /* Call Box */
+        .call-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .call-header {
+            background: #0a45f4;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .call-body {
+            padding: 15px;
+        }
+        
+        .call-body a {
+            color: #0a45f4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        #close-call {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                padding: 70px 15px 25px;
+            }
+            
+            header img {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                display: none;
+                padding: 10px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
+            
+            .search-bar {
+                margin: 10px auto;
+                width: 90%;
+            }
+            
+            .order-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 60px 10px 20px;
+            }
+            
+            header img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .call-box {
+                width: 90%;
+                right: 5%;
+            }
+            
+            .faq-item h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        </div>
+        SHRI MAHALAXMI KRUSHI SEVA KENDR, KHANDAL
+        <div class="slogan">FAQs & Help Center</div>
+        <p class="intro-text">Find answers to common questions about fertilizers and farming</p>
+    </header>
+    
+    <nav>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <ul id="navMenu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="product.html"><i class="fas fa-tags"></i> Product Rate</a></li>
+            <li><a href="solution.html"><i class="fas fa-lightbulb"></i> Agriculture Solutions</a></li>
+            <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Buy and Order</a></li>
+            <li><a href="help.html" class="active"><i class="fas fa-question-circle"></i> FAQs & Help Center</a></li>
+            <li class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Products...">
+                    <button><i class="fas fa-search"></i> Search</button>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <main class="main-container">
+        <div class="section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>What is the best fertilizer for my crops? <span></span></h3>
+                <p>The best fertilizer depends on your soil type and crop requirements. We recommend getting your soil tested first. Generally, NPK fertilizers work well for most crops, but our experts can help you choose the perfect blend for your specific needs.</p>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>How often should I apply fertilizer? <span></span></h3>
+                <p>Fertilizer application frequency depends on crop type and growth stage. For most crops, we recommend application every 4-6 weeks during the growing season. Our agriculture solutions team can create a customized fertilization schedule for your farm.</p>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>Are organic fertilizers better than chemical fertilizers? <span></span></h3>
+                <p>Both have their advantages. Organic fertilizers improve soil health over time, while chemical fertilizers provide immediate nutrients. Many farmers find success with a combination approach. We offer both types and can advise on the best solution for your farm.</p>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>How do I store fertilizers properly? <span></span></h3>
+                <p>Store fertilizers in a cool, dry place away from direct sunlight and moisture. Keep them in their original containers with lids tightly closed. Avoid storing near food products or animal feed. Our staff can provide specific storage recommendations for each product.</p>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>What safety precautions should I take when using fertilizers? <span></span></h3>
+                <p>Always wear gloves and protective clothing when handling fertilizers. Avoid inhalation of dust or fumes. Wash hands thoroughly after use. Store out of reach of children and animals. Follow all label instructions carefully.</p>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>How can I determine the right fertilizer dosage? <span></span></h3>
+                <p>The right dosage depends on soil conditions, crop type, and growth stage. We recommend soil testing for accurate recommendations. Our experts can analyze your soil and provide precise dosage guidelines for optimal results.</p>
+            </div>
+            
+            <div class="help-center">
+                <h3>Still have questions?</h3>
+                <p class="contact-info">Contact our agricultural experts at <strong>mahalaxmikrushi1126@gmail.com</strong> or call <strong>+91 7028230423</strong></p>
+                
+                <div class="order-options">
+                    <a href="https://wa.me/message/7EAOLWJABJFWH1" class="order-button whatsapp" id="whatsapp-chat">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                    <a href="#" class="order-button call" id="call-now">
+                        <i class="fas fa-phone"></i> Call for Help
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="call-box" class="call-box">
+            <div class="call-header">
+                <span>Call us</span>
+                <button id="close-call">×</button>
+            </div>
+            <div class="call-body">
+                <p>Call our help center at: <a href="tel:+917028230423">+91 7028230423</a></p>
+                <p>Available 9:00 AM - 6:00 PM, Monday to Saturday</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 SHRI MAHALAXMI KRUSHI SEVA KENDR | All Rights Reserved</p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        });
+        
+        // FAQ Toggle Function
+        function toggleFAQ(item) {
+            item.classList.toggle('active');
+        }
+        
+        // Call Box Functionality
+        const callNowBtn = document.getElementById('call-now');
+        const callBox = document.getElementById('call-box');
+        const closeCall = document.getElementById('close-call');
+        
+        callNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            callBox.style.display = 'block';
+        });
+        
+        closeCall.addEventListener('click', function() {
+            callBox.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

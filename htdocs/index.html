@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SHREE MAHALAXMI AGRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-image: url(agro.png.webp);
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Improved Header with Logo */
+        header {
+            background: linear-gradient(135deg, #f8fafa, #dff702);
+            color: rgb(28, 7, 253);
+            padding: 80px 15px 30px;
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            object-fit: contain;
+            background: white;
+        }
+        
+        .slogan {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: bold;
+            color: #fa4d08;
+            margin-top: 10px;
+        }
+        
+        /* Responsive Navigation */
+        nav {
+            background-color: #0a45f4;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 5px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav ul li {
+            margin: 5px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        
+        .search-bar input {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            flex-grow: 1;
+            min-width: 120px;
+            font-size: 0.9rem;
+        }
+        
+        .search-bar button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            border: none;
+            background-color: rgb(6, 246, 6);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: #05d105;
+        }
+        
+        /* Slider Styles */
+        .slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .slider img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            display: none;
+        }
+        
+        .slider img.active {
+            display: block;
+        }
+        
+        /* Main Content Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 15px;
+        }
+        
+        .product {
+            background: rgba(217, 255, 4, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .product:hover {
+            transform: scale(1.03);
+        }
+        
+        .product img {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .product h2 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #0a45f4;
+        }
+        
+        .buy-btn {
+            background-color: #0a45f4;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .buy-btn:hover {
+            background-color: #0830b5;
+        }
+        
+        /* Sections Styling */
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a45f4;
+            font-size: 1.8rem;
+        }
+        
+        /* Order Options */
+        .order-options {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .order-button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .order-button.whatsapp {
+            background-color: #25d366;
+        }
+        
+        .order-button.whatsapp:hover {
+            background-color: #128c7e;
+        }
+        
+        .order-button.call {
+            background-color: #0a45f4;
+        }
+        
+        .order-button.call:hover {
+            background-color: #0830b5;
+        }
+        
+        /* Partners Section */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 15px;
+        }
+        
+        .partner-card {
+            background: rgba(224, 141, 206, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .partner-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        
+        .partner-card h3 {
+            color: #0a45f4;
+            margin-bottom: 10px;
+        }
+        
+        /* Social Media Section */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: #0a45f4;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #25d366;
+        }
+        
+        /* Help Section */
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .help-column h3 {
+            color: #0a45f4;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0a45f4;
+            padding-bottom: 5px;
+        }
+        
+        .help-column ul {
+            list-style-type: none;
+        }
+        
+        .help-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .help-column ul li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        .help-column ul li a:hover {
+            color: #0a45f4;
+        }
+        
+        /* Footer */
+        footer {
+            background: #010603;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+        
+        /* Call Box */
+        .call-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .call-header {
+            background: #0a45f4;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .call-body {
+            padding: 15px;
+        }
+        
+        .call-body a {
+            color: #0a45f4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        #close-call {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                padding: 70px 15px 25px;
+            }
+            
+            header img {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                display: none;
+                padding: 10px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
+            
+            .search-bar {
+                margin: 10px auto;
+                width: 90%;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 60px 10px 20px;
+            }
+            
+            header img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .call-box {
+                width: 90%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        </div>
+        SHRI MAHALAXMI KRUSHI SEVA KENDR, KHANDAL
+        <div class="slogan">Nurturing Soil, Growing Prosperity</div>
+    </header>
+    
+    <nav>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <ul id="navMenu">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="product.html"><i class="fas fa-tags"></i> Product Rate</a></li>
+            <li><a href="solution.html"><i class="fas fa-lightbulb"></i> Agriculture Solutions</a></li>
+            <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Buy and Order</a></li>
+            <li><a href="help.html"><i class="fas fa-question-circle"></i> FAQs & Help Center</a></li>
+            <li class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Products...">
+                    <button><i class="fas fa-search"></i> Search</button>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <main class="main-container">
+        <div class="slider">
+            <img src="front1.jpg" class="active" alt="Slide 1">
+            <img src="Rack1.jpg" alt="Slide 2">
+            <img src="Rack3.jpg" alt="Slide 3">
+            <img src="fertilizer.jpg" alt="Slide 4">
+        </div>
+        
+        <div class="section">
+            <h2 id="products">Our Fertilizer Products</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="https://jaikisaan.online/pub/media/wysiwyg/jai-kisaan-range.png" alt="NPK Fertilizer">
+                    <h2>NPK Fertilizer</h2>
+                    <a href="NPK.html" class="buy-btn">NPK</a>
+                </div>
+                <div class="product">
+                    <img src="https://jaikisaan.online/pub/media/wysiwyg/banner5.png" alt="Water Soluble Grade">
+                    <h2>Water Soluble Grade</h2>
+                    <a href="watergreade.html" class="buy-btn">पाण्यात विरघळणारे विद्राव्य खते</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/354502464/CH/OF/JR/123836909/whatsapp-image-2023-10-20-at-5-16-22-pm-2-500x500.jpeg" alt="Insecticide">
+                    <h2>Insecticide</h2>
+                    <a href="Inscticide.html" class="buy-btn">कीटकनाशक</a>
+                </div>
+                <div class="product">
+                    <img src="https://www.nichinoindia.com/assets/img/allproducts/Products%20page.png" alt="Herbicide">
+                    <h2>Herbicide</h2>
+                    <a href="Herbicide.html" class="buy-btn">तणनाशक</a>
+                </div>
+                <div class="product">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/6/316742970/UL/GD/YY/24030951/rcsbranding-packaging-sticker-box-04-500x500.png" alt="Fungicide">
+                    <h2>Fungicide</h2>
+                    <a href="Herbicide.html" class="buy-btn">बुरशीनाशक</a>
+                </div>
+                <div class="product">
+                    <img src="https://jaikisaan.online/pub/static/version1715316244/frontend/Solwin/freego_child/en_US/images/crop-product-range2.jpg" alt="Plant Growth Regulator">
+                    <h2>Plant Growth Regulator</h2>
+                    <a href="Plant growth.html" class="buy-btn">वनस्पती वाढ नियामक</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="order-options">
+                <h2>YOU CAN ORDER VIA</h2>
+                <a href="https://wa.me/message/7EAOLWJABJFWH1" class="order-button whatsapp" id="whatsapp-chat">
+                    <i class="fab fa-whatsapp"></i> Order with WhatsApp
+                </a>
+                <a href="#" class="order-button call" id="call-now">
+                    <i class="fas fa-phone"></i> Call us to Order
+                </a>
+            </div>
+        </div>
+        
+        <div id="call-box" class="call-box">
+            <div class="call-header">
+                <span>Call us</span>
+                <button id="close-call">×</button>
+            </div>
+            <div class="call-body">
+                <p>Call us at: <a href="tel:+917028230423">+91 7028230423</a></p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Our Partners</h2>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEGS-Jf98nY3fFgKtNFSf7TI1f_jEyb1PEpA&s" alt="Jay Kisan">
+                    <h3>Jay Kisan</h3>
+                    <p>Jay Kisan is a leading provider of high-quality fertilizers and agricultural solutions, dedicated to empowering farmers with innovative products and sustainable farming practices.</p>
+                </div>
+                <div class="partner-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCYpHOkIt1SOFtW0--GjHIsWhXt8x4p3xyTQ&s" alt="Mahadhan">
+                    <h3>Mahadhan</h3>
+                    <p>Mahadhan is a trusted name in the agricultural industry, offering a wide range of fertilizers and crop nutrition products to enhance productivity and soil health.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Follow Us</h2>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/rahul07_rg/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61567611290823" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/message/7EAOLWJABJFWH1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="contact-info" style="margin-top: 20px; text-align: center;">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> mahalaxmikrushi1126@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 7028230423</p>
+                <p><i class="fas fa-map-marker-alt"></i> A/P-KHANDAL TAL.GADHINGLAJ PINCODE:416551</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>We are here to help you!</h2>
+            <div class="help-grid">
+                <div class="help-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="order.html">Join Sales</a></li>
+                        <li><a href="about.html">Success Stories</a></li>
+                        <li><a href="about.html">Press Section</a></li>
+                        <li><a href="about.html">Shop Album</a></li>
+                    </ul>
+                </div>
+                <div class="help-column">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="contact.html">Feedback</a></li>
+                        <li><a href="contact.html">Complaints</a></li>
+                        <li><a href="help.html">Customer Care</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="help-column">
+                    <h3>Suppliers Tool Kit</h3>
+                    <ul>
+                        <li><a href="product.html">Product Rate</a></li>
+                        <li><a href="help.html">Latest BuyLead</a></li>
+                        <li><a href="help.html">Learning Centre</a></li>
+                    </ul>
+                </div>
+                <div class="help-column">
+                    <h3>Buyers Tool Kit</h3>
+                    <ul>
+                        <li><a href="order.html">Post Your Requirement</a></li>
+                        <li><a href="order.html">Products You Buy</a></li>
+                        <li><a href="order.html">Search Products & Suppliers</a></li>
+                        <li><a href="solution.html">Accounting Solutions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Agro Fertilizer Shop | All Rights Reserved</p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        });
+        
+        // Image Slider
+        document.addEventListener("DOMContentLoaded", function() {
+            let index = 0;
+            const images = document.querySelectorAll(".slider img");
+            
+            function slideShow() {
+                images.forEach(img => img.classList.remove("active"));
+                images[index].classList.add("active");
+                index = (index + 1) % images.length;
+            }
+            
+            slideShow();
+            setInterval(slideShow, 2500);
+            
+            // Search Functionality
+            const searchInput = document.querySelector(".search-bar input");
+            const searchButton = document.querySelector(".search-bar button");
+            const products = document.querySelectorAll(".product");
+            
+            function searchProducts() {
+                const searchText = searchInput.value.toLowerCase().trim();
+                products.forEach(product => {
+                    if (product.innerText.toLowerCase().includes(searchText)) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            }
+            
+            searchButton.addEventListener("click", searchProducts);
+            searchInput.addEventListener("input", searchProducts);
+            
+            // Call Box Functionality
+            const callNowBtn = document.getElementById('call-now');
+            const callBox = document.getElementById('call-box');
+            const closeCall = document.getElementById('close-call');
+            
+            callNowBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                callBox.style.display = 'block';
+            });
+            
+            closeCall.addEventListener('click', function() {
+                callBox.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

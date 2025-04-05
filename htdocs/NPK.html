@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Kisan Fertilizers - Agri Fertilizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-image: url('agro.png.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        header {
+            background: linear-gradient(135deg, #f8fafa, #dff702);
+            color: rgb(28, 7, 253);
+            padding: 20px;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 200px;
+            font-size: 40px;
+            font-weight: 600;
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            height: 180px;
+            position: relative;
+        }
+        header img {
+            position: absolute;
+            left: 20px;
+            height: 140px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .slogan {
+            font-size: 30px;
+            font-weight: 400;
+            color: #d30202;
+            margin-top: 5px;
+            text-align: center;
+            padding-left: 200px;
+            font-weight: bold;
+            background-color: #dff70297;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            font-size: 16px;
+        }
+        .search-bar button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            border: none;
+            background-color: rgb(6, 246, 6);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .search-bar button:hover {
+            background-color: rgb(5, 200, 5);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #0a45f4;
+            width: 100%;
+            align-items: center;
+            margin-top: 0;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 8px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px;
+        }
+        .product h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 15px;
+        }
+        .product p {
+            font-size: 1.1rem;
+            color: rgb(23, 2, 2);
+            margin-top: 10px;
+            background-color: #f7a902b1;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .product {
+            background: #d9ff04cd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .buy-btn {
+            background-color: rgb(11, 8, 238);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .buy-btn:hover {
+            background-color: rgb(73, 0, 100);
+        }
+        footer {
+            background: rgba(1, 6, 3, 0.7);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            header {
+                padding-right: 100px;
+                font-size: 32px;
+            }
+            .slogan {
+                font-size: 24px;
+                padding-left: 100px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                text-align: center;
+            }
+            header img {
+                position: static;
+                transform: none;
+                margin-bottom: 10px;
+                height: 100px;
+            }
+            .slogan {
+                padding-left: 0;
+                margin-top: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            .search-bar {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+            .search-bar input {
+                width: 70%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+            .product img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        SHRI MAHALAXMI KRUSHI SEVA KENDR, KHANDAL
+        <div class="slogan">NPK Fertilizers</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="product.html">Product Rate</a></li>
+            <li><a href="solution.html">Agriculture Solutions</a></li>
+            <li><a href="order.html">Buy and Order</a></li>
+            <li><a href="help.html">FAQs & Help Center</a></li>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Products...">
+                <button>Search</button>
+            </div>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="products">
+            <div class="product">
+                <img src="https://jaikisaan.online/pub/media/csipl/fertilizer/image/cache/355/UREA_NEEM_COATED_copy_1.png" alt="Urea 45 kg">
+                <h2>Urea 45 kg</h2>
+                <p>266.50/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://honeybee-static-production.s3.amazonaws.com/product-images/ddbaa273-241a-4454-9ad9-d1fa2d551756.jpeg" alt="DAP 50 kg">
+                <h2>DAP 50 kg</h2>
+                <p>1350/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://kissanemart.com/storage/mangala-mop-major-nutrients-2-400x400.jpg" alt="MOP 50 kg">
+                <h2>MOP 50 kg</h2>
+                <p>1550/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/DR/HH/HJ/SELLER-79887316/jai-kisaan-sop-fertiliser.png" alt="SSP 50 kg">
+                <h2>SSP 50 kg</h2>
+                <p>550/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://jaikisaan.online/pub/media/csipl/fertilizer/image/cache/355/MicrosoftTeams-image_13_.png" alt="USSP 50 kg">
+                <h2>USSP 50 kg</h2>
+                <p>700/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://3.imimg.com/data3/JQ/DM/MY-8405013/suphala-15-15-15.png" alt="15:15:15 50 kg">
+                <h2>15:15:15 50 kg</h2>
+                <p>1650/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://4.imimg.com/data4/CG/RB/GLADMIN-11065756/jai-kissan-samarth-10-26-26.jpg" alt="10:26:26 50 kg">
+                <h2>10:26:26 50 kg</h2>
+                <p>1725/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://jaikisaan.online/pub/media/csipl/fertilizer/image/cache/355/NAVRATNA_NPK_14_35_14_copy_1.png" alt="14:35:14 50 kg">
+                <h2>14:35:14 50 kg</h2>
+                <p>1800/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://jaikisaan.online/pub/media/csipl/fertilizer/image/cache/355/SAMPANNA_NPK_24_24_0_copy_1.png" alt="24:24:00 50 kg">
+                <h2>24:24:00 50 kg</h2>
+                <p>1850/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://mahadhan.co.in/wp-content/uploads/2022/01/Croptek-Sugarcane.png" alt="9:24:24 40 kg">
+                <h2>9:24:24 40 kg</h2>
+                <p>1900/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.agroes.in/product-images/images.jpg/105281000004209279/600x600" alt="12:32:16 50 kg">
+                <h2>12:32:16 50 kg</h2>
+                <p>Price: Varies</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuC4H5VtrsJDWny2fNyP4MJD70JIIXp49oDA&s" alt="20:20:00:13 50 kg">
+                <h2>20:20:00:13 50 kg</h2>
+                <p>1400/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://4.imimg.com/data4/AS/OY/MY-8206809/bio-fertilizer.jpg" alt="18:18:10 50 kg">
+                <h2>18:18:10 50 kg</h2>
+                <p>1400/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/IX/SI/XA/SELLER-2817736/jai-kisaan-npk-12-61-00-mono-ammonium-phosphate-fertilizers.jpg" alt="Ammonium Sulphate 50 kg">
+                <h2>Ammonium Sulphate 50 kg</h2>
+                <p>1000/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://mahadhan.co.in/wp-content/uploads/2017/05/mahadhanmansulf.jpg" alt="Magnesium Sulphate 25 kg">
+                <h2>Magnesium Sulphate 25 kg</h2>
+                <p>500/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://www.gsfclimited.com/content/images/AS-Brochure-PUN.jpg" alt="Phospho Gypsum 40 kg">
+                <h2>Phospho Gypsum 40 kg</h2>
+                <p>650/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/NT/CV/WN/GLADMIN-4428389/selection-581-500x500.png" alt="Green Harvest 40 kg">
+                <h2>Green Harvest 40 kg</h2>
+                <p>750/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+            <div class="product">
+                <img src="https://5.imimg.com/data5/ANDROID/Default/2023/1/MX/FQ/EA/7386433/product-jpeg-500x500.jpg" alt="Nrich (निंबोळी पेंड) 50 kg">
+                <h2>Nrich (निंबोळी पेंड) 50 kg</h2>
+                <p>850/-</p>
+                <a href="https://forms.gle/LsG8FwPJLVyeSqwRA">
+                    <button class="buy-btn">Book Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Jay Kisan Fertilizers | All Rights Reserved<br>
+        SHRI MAHALAXMI KRUSHI SEVA KENDR, KHANDAL
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.querySelector(".search-bar input");
+            const searchButton = document.querySelector(".search-bar button");
+            const products = document.querySelectorAll(".product");
+
+            function searchProducts() {
+                const searchText = searchInput.value.toLowerCase().trim();
+                products.forEach(product => {
+                    const productText = product.innerText.toLowerCase();
+                    if (searchText === "" || productText.includes(searchText)) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            }
+            
+            searchButton.addEventListener("click", searchProducts);
+            searchInput.addEventListener("input", searchProducts);
+            searchInput.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    searchProducts();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
